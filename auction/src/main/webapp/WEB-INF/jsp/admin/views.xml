@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="adminhome" extends="baseLayout">
+		<put-attribute name="title" value="ADMIN" />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/registrationHome.jsp" />
+	</definition>
+	<definition name="createnewauction" extends="baseLayout">
+		<put-attribute name="title" value="Create Auction" />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/auction/CreateAuction" />
+	</definition>
+	<definition name="vendorRegistrationPage" extends="baseLayout">
+		<put-attribute name="title" value="Vendor Registration" />
+
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/vendorRegistrationPage.jsp" />
+	</definition>
+
+
+	<definition name="vendorRegistrationPage" extends="baseLayout">
+		<put-attribute name="title" value="Vendor Registration" />
+
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/vendorRegistrationPage.jsp" />
+	</definition>
+
+	<definition name="registrationHome" extends="baseLayout">
+		<put-attribute name="title" value="Registration " />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/registrationHome.jsp" />
+	</definition>
+
+
+	<definition name="resetPasswordHome" extends="baseLayout">
+		<put-attribute name="title" value="Registration " />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/resetPasswordHome.jsp" />
+	</definition>
+
+
+	<definition name="userauctionmap" extends="baseLayout">
+		<put-attribute name="title" value="Registration " />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/userauctionmap.jsp" />
+	</definition>
+	
+	
+	<definition name="createauction" extends="baseLayout">
+		<put-attribute name="title" value="Registration " />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/createauction/CreateAuction.jsp" />
+	</definition>
+	
+	<definition name="fileupload" extends="baseLayout">
+		<put-attribute name="title" value="File Upload " />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/fileupload/FileUpload.jsp" />
+	</definition>
+	
+	
+	<definition name="superAdmin" extends="baseLayout">
+		<put-attribute name="title" value="Super Admin " />
+		<put-attribute name="header"
+			value="/WEB-INF/jsp/admin/admin_header.jsp" />
+		<put-attribute name="footer"
+			value="/WEB-INF/jsp/admin/admin_footer.jsp" />
+		<put-attribute name="body"
+			value="/WEB-INF/jsp/admin/superAdmin.jsp" />
+	</definition>
+	<definition name="logout" extends="loginLayout">
+		<put-attribute name="title" value="Log Out" />
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/login.jsp" />
+	</definition>
+
+
+	<definition name="register" extends="baseLayout">
+		<put-attribute name="title" value="User Register" />
+
+		<put-attribute name="body" value="/WEB-INF/jsp/admin/register.jsp" />
+	</definition>
+
+
+
+
+
+
+
+
+</tiles-definitions>

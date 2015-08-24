@@ -1,0 +1,23 @@
+<html>
+<body>
+<h2>Hi ${emailTemplateBean.firstName} ${emailTemplateBean.lastName}, Congratulations! You have won a bid.</h2>
+
+<h3>Won Bid details</h3>
+<table  border="1" bgcolor="#eaedf4">
+<tr>
+<td align="center" valign="middle" width="100">Bid Sequence Number</td>
+<td align="center" valign="middle" width="100">Bid Amount</td>
+</tr>
+<tr>
+<td align="center" valign="middle" width="100">${emailTemplateBean.bidSerialNumber}</td>
+<td align="center" valign="middle" width="100">${emailTemplateBean.bidAmount}</td>
+</tr>
+</table>
+
+<h2>Thank you for participating in the auction.</h2>
+
+<h2>Please contact Auction coordinator for complete details.</h2>
+<h3>Regards, Auction Team.</h3>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiResourceLocking="false" privileged="true">
+	<Resource name="jdbc/auctionDB" type="javax.sql.DataSource"
+		maxActive="500" maxIdle="50" username="auctionuser" maxWait="10000"
+		removeAbandonedTimeout="600" validationQuery="select 1"
+		driverClassName="com.mysql.jdbc.Driver" password="VIpassAUC123"
+		removeAbandoned="true" logAbandoned="true"
+		url="jdbc:mysql://localhost:3306/auction" />
+
+	<Resource name="mail/Session" type="javax.mail.Session" auth="Container"
+		password="VikasAnand123" username="vikas.anand@navprayas.com" mail.user="vikas.anand@navprayas.com"
+		mail.debug="true" mail.transport.protocol="smtp" mail.smtp.auth="true"
+		mail.smtp.user="vikas.anand@navprayas.com" mail.smtp.host="mail.navprayas.com"
+		mail.smtp.from="vikas.anand@navprayas.com" />
+
+
+</Context>

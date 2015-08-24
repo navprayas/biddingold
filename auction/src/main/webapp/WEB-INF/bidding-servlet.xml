@@ -1,0 +1,180 @@
+<?xml  version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<import resource="classpath:applicationContext-common-ds.xml" />
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.navprayas.bidding" />
+	<bean class="org.springframework.format.support.FormattingConversionService" />
+	<!-- Configures Handler Interceptors -->
+	<mvc:interceptors>
+		<!-- Changes the locale when a 'locale' request parameter is sent; e.g. 
+			/?locale=de -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+
+	<!-- Saves a locale change using a cookie -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
+	<bean class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location">
+			<value>/WEB-INF/views/reports/excel-views.xml</value>
+		</property>
+	</bean>
+
+	<!-- <bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+ -->
+ 
+ <bean id="tilesViewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver"
+		p:viewClass="org.springframework.web.servlet.view.tiles2.TilesView" />
+
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles-defs.xml</value>
+				<value>/WEB-INF/jsp/**/views.xml</value>
+			</list>
+		</property>
+	</bean>
+ 
+ 
+ 
+ 
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		p:location="/WEB-INF/jdbc.properties" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<tx:annotation-driven />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="kilimInitializer" class="com.navprayas.bidding.utility.KilimEngineGenerator"
+		init-method="init" destroy-method="destroy">
+		<constructor-arg>
+			<ref bean="sessionFactory" />
+		</constructor-arg>
+
+	</bean>
+
+	<bean id="observerEmailSender" class="com.navprayas.bidding.common.email.EmailSender">
+		<constructor-arg>
+			<ref local="mailSender" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref local="velocityEngine" />
+		</constructor-arg>
+		<property name="templateName" value="winbidtemplate.vm" />
+	</bean>
+
+	<bean id="bidderEmailSender" class="com.navprayas.bidding.common.email.EmailSender">
+		<constructor-arg>
+			<ref local="mailSender" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref local="velocityEngine" />
+		</constructor-arg>
+		<property name="templateName" value="biddertemplate.vm" />
+	</bean>
+
+	<bean id="commonEmailSender" class="com.navprayas.bidding.common.email.EmailSender">
+		<constructor-arg>
+			<ref local="mailSender" />
+		</constructor-arg>
+		<constructor-arg>
+			<ref local="velocityEngine" />
+		</constructor-arg>
+		<property name="templateName" value="ForgotPasswordEmail.vm" />
+	</bean>
+
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="${email.host.smtphost}"></property>
+		<property name="port" value="${email.host.port}"></property>
+		<property name="protocol" value="smtps" />
+		<property name="username" value="${email.host.username}"></property>
+		<property name="password" value="${email.host.password}"></property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtps.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<!-- <prop key="mail.smtps.debug">true</prop> -->
+				<!-- <prop key="mail.transport.protocol">smtp</prop> -->
+				<!-- <prop key="mail.smtp.localhost">smtp.gmail.com</prop> -->
+				<!-- <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop> 
+					<prop key="mail.smtp.socketFactory.fallback">true</prop> <prop key="mail.smtp.ssl.trust">smtpserver</prop> 
+					<prop key="mail.smtp.dsn.notify">SUCCESS ORCPT=rfc822</prop> <prop key="mail.smtp.dsn.ret">FULL</prop> -->
+
+
+
+
+
+			</props>
+		</property>
+
+	</bean>
+
+	<bean id="velocityEngine"
+		class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="velocityProperties">
+			<value>
+				resource.loader=class
+				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+			</value>
+		</property>
+	</bean>
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- setting maximum upload size -->
+		<property name="maxUploadSize" value="100000" />
+
+	</bean>
+</beans>

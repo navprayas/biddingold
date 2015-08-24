@@ -1,0 +1,18 @@
+.tabset_tabs	{ margin:0; padding:0; list-style-type:none; position:relative; z-index:2; white-space:nowrap;
+height:20px; padding-top:5px; }
+.tabset_tabs li	{ margin:0; padding:0; display:inline }
+.tabset_tabs a	{ color:#399ede! important; border:0px solid ; text-decoration:none; padding:0 0.6em; border-left-width:0; border-bottom:none }
+.tabset_tabs a:hover	{ color:#399ede ! important; }
+.tabset_tabs a.active	{ color:#399ede ! important;   border-left-width:0px; cursor:default; border-bottom:0px; padding-top:1px; padding-bottom:1px; }
+
+.tabset_tabs li.firstchild a	{ border-right-width:0px}
+
+.tabset_content	{position:relative; z-index:1; display:none ;}
+.tabset_label	{ display:none;}
+
+.tabset_content_active	{ display:block;}
+
+@media aural{
+	.tabset_content,
+	.tabset_label	{ display:none}
+}

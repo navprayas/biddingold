@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:sec="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/jdbc
+		http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<import resource="classpath:applicationContext-common-ds.xml" />
+	<!-- <annotation-driven/> -->
+
+	<sec:http auto-config="true">
+		<sec:intercept-url pattern="/users/**" filters="none" />
+		<sec:intercept-url pattern="/dwr/**" filters="none" />
+		<sec:intercept-url pattern="/static/**" filters="none" />
+		<sec:intercept-url pattern="/images/**" filters="none" />
+		<sec:intercept-url pattern="/css/**" filters="none" />
+		<sec:intercept-url pattern="/css/fonts/**" filters="none" />
+		<sec:intercept-url pattern="/js/**" filters="none" />
+		<sec:intercept-url pattern="/pdf/**" filters="none" />
+		<sec:intercept-url pattern="/login.jsp" filters="none" />
+		<sec:intercept-url pattern="/error.jsp" filters="none" />
+		<sec:intercept-url pattern="/accessDenied.jsp"
+			filters="none" />
+		<sec:intercept-url pattern="/logout.jsp" filters="none" />
+		<sec:intercept-url pattern="/error/*.do" filters="none" />
+		<sec:intercept-url pattern="/admin/**"
+			access="ROLE_ADMIN, ROLE_SUPER_ADMIN" />
+		<sec:intercept-url pattern="/observer/**" access="ROLE_OBSERVER" />
+		<sec:intercept-url pattern="/bidder/**" access="ROLE_BIDDER" />
+		<sec:intercept-url pattern="/**"
+			access="ROLE_ADMIN, ROLE_OBSERVER, ROLE_BIDDER, ROLE_SUPER_ADMIN" />
+		<!-- Disable web URI authorization, as we're using <annotation-driven> 
+			and have @Secured the services layer instead <intercept-url pattern="/listAccounts.html" 
+			access="IS_AUTHENTICATED_REMEMBERED" /> <intercept-url pattern="/post.html" 
+			access="ROLE_TELLER" /> <sec:intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" 
+			/> -->
+		<sec:form-login login-page='/login.jsp'
+			authentication-failure-url="/login.jsp?login_error=1"
+			default-target-url='/home' always-use-default-target='true' />
+		<sec:logout logout-url="/j_logout" invalidate-session="true" logout-success-url="/login.jsp" />
+
+		<!-- All of this is unnecessary if auto-config="true" -->
+		<!-- <form-login /> <anonymous /> <http-basic /> <logout /> <remember-me 
+			/> -->
+
+		<!-- Limits the number of concurent sessions a user can have -->
+		<sec:session-management
+			session-fixation-protection="none" invalid-session-url="/login.jsp?session_error=1"
+			session-authentication-error-url="/login.jsp?session_error=1">
+			<sec:concurrency-control expired-url="/login.jsp?session_error=1" />
+		</sec:session-management>
+
+	</sec:http>
+
+	<!-- Usernames/Passwords are rod/koala dianne/emu scott/wombat -->
+
+	<sec:authentication-manager alias="authManager">
+		<sec:authentication-provider ref="daoAuthenticationProvider" />
+	</sec:authentication-manager>
+
+
+	<bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="userDetailsService" ref="userDetailsService" />
+		<property name="passwordEncoder" ref="passwordEncoder"/> 
+	</bean>
+
+
+	<bean id="userDetailsService"
+		class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" id="passwordEncoder">
+    	<property name="encodeHashAsBase64" value="true"></property>
+    </bean>
+	
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+   <class name="com.navprayas.bidding.engine.common.Bid" table="bids">
+      <id column="BIDID" name="bidId" type="java.lang.Long">
+        <generator class="increment"/>
+      </id>
+      	<property column="BIDITEMID" name="bidItemId" type="java.lang.Long"/>
+		<property column="AUCTIONID" name="auctionId" type="java.lang.Long"/>
+		<property column="BIDAMOUNT" name="bidAmount" type="java.lang.Double"/>
+		<property column="CURRENCY" name="currency" type="java.lang.String"/>
+		<property column="BIDTIME" name="bidTime" type="java.util.Date"/>
+		<property column="BIDSTATUS" name="status" type="java.lang.String"/>
+		<property column="BIDDERNAME" name="bidderName" type="java.lang.String"/>
+		<property column="COMMENTS" name="comments" type="java.lang.String"/>
+		<property column="BIDTYPE" name="bidType" type="java.lang.Integer"/>
+   </class>
+</hibernate-mapping>

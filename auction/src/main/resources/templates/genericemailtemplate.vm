@@ -1,0 +1,10 @@
+<html>
+<body>
+<h3>Hi ${emailTemplateBean.firstName}, welcome to the Auction!</h3>
+
+<div>
+   You have got mail.
+</div>
+</body>
+
+</html>

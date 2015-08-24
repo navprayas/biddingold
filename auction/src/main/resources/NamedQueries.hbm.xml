@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  
+  <sql-query name="updateAuction">
+  
+  UPDATE auction SET STARTDATE='2011-04-12 00:00:00', ENDDATE='2011-04-20 00:00:00';
+  
+  </sql-query>
+  
+  <sql-query name="insertAuction">
+  
+	INSERT INTO `auction`(`AUCTIONID`,`STARTDATE`,`ENDDATE`,`LASTUPDATETIME`,`CREATEDTIME`)
+	SELECT MAX(AUCTIONID)+1 ,'2011-05-12 00:00:00','2011-06-20 00:00:00','2011-05-12 00:00:00','2011-05-12 00:00:00' FROM auction;
+
+  </sql-query>
+  
+  <sql-query name="insertBidItem1">
+  	INSERT  INTO `biditem`(`BIDITEMID`,`NAME`,`LOCATION`,`CITY`,`ZONE`,`MINBIDPRICE`,`MINBIDINCREMENT`,`INITIALSTARTTIME`,`TIMEEXTAFTERBID`,`STATUSCODE`,`categoryid`,`AUCTIONID`,`currency`) 
+	SELECT MAX(BIDITEMID)+1,'BIDItem1','noida','noida','UP',5000.00,500.00,'3','1','START',1,MAX(auction.AUCTIONID),'INR' FROM auction,biditem;
+
+  </sql-query>
+  
+  <sql-query name="insertBidItem2">
+  INSERT  INTO `biditem`(`BIDITEMID`,`NAME`,`LOCATION`,`CITY`,`ZONE`,`MINBIDPRICE`,`MINBIDINCREMENT`,`INITIALSTARTTIME`,`TIMEEXTAFTERBID`,`STATUSCODE`,`categoryid`,`AUCTIONID`,`currency`) 
+	SELECT MAX(BIDITEMID)+1,'BIDItem2','noida','noida','UP',6000.00,500.00,'3','1','START',1,MAX(auction.AUCTIONID),'INR' FROM auction,biditem;
+</sql-query>
+  
+  
+  <sql-query name="insertBidSeq1">
+  	INSERT  INTO `bidsequence`(`SEQUENCEID`,`AUCTIONID`,`BIDITEMID`,`BIDSPAN`) 
+	SELECT 1,MAX(auction.AUCTIONID),MAX(biditem.BIDITEMID) - 1,'300' FROM auction,biditem;
+
+  </sql-query>
+  
+  <sql-query name="insertBidSeq2">
+  	INSERT  INTO `bidsequence`(`SEQUENCEID`,`AUCTIONID`,`BIDITEMID`,`BIDSPAN`) 
+	SELECT 2,MAX(auction.AUCTIONID),MAX(biditem.BIDITEMID),'400' FROM auction,biditem;
+
+  </sql-query>
+  
+   <sql-query name="insertItemLot1">
+  	INSERT  INTO `itemlot`(`lotid`,`biditemid`,`name`,`LengthRange`,`ActualLength`,`QUANTITY`,`UNIT`,`CURRENCY`,`Remark`)
+	SELECT MAX(lotid)+1,MAX(biditem.biditemid) - 1,'BIDItem1 - Item lot1','4\' to 8\'','5.00',45,'MT','INR','TEST Item lot 1' FROM biditem,itemlot;
+
+   </sql-query>  
+   
+   <sql-query name="insertItemLot2">
+  		INSERT  INTO `itemlot`(`lotid`,`biditemid`,`name`,`LengthRange`,`ActualLength`,`QUANTITY`,`UNIT`,`CURRENCY`,`Remark`)
+	SELECT MAX(lotid)+1,MAX(biditem.biditemid),'BIDItem2 - Item lot2','5\' to 9\'','6.00',45,'MT','INR','TEST Item lot 1' FROM biditem,itemlot;
+   </sql-query>
+
+	<sql-query name="sp_auctObserverClosedDetails" callable="true">
+	    <return alias="observerClosedDetailsBean" class="com.bizonease.ecommerce.core.persistence.impl.ObserverClosedDetailsBean"/> 	    	
+	    <![CDATA[{ call sp_auctObserverClosedDetails(:auctionId, :seqId, :categoryId) }]]>
+	</sql-query>  
+  
+</hibernate-mapping>

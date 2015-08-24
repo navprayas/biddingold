@@ -1,0 +1,105 @@
+
+
+div.zd_dialog_t1 div.t2 div.t3,  div.zd_dialog_c1
+{
+    font-family:Arial;
+	font-size:12px;
+}
+
+div.zd_dialog_t1
+{
+    background: url(media/zd_dialog_top_corners.gif) top left no-repeat; 
+    
+}
+
+div.zd_dialog_t1 div.t2
+{
+    background: url(media/zd_dialog_top_corners.gif) top right no-repeat;
+    padding-right:5px;
+}
+
+div.zd_dialog_t1 div.t2 div.t3
+{
+    background: url(media/zd_dialog_top_bar.gif);
+    height:24px;
+    font-weight:normal;
+    font-size:10pt;
+    color:#ffffff;
+}
+
+div.zd_dialog_t1 div.t2 div.t3  div.t4a
+{
+    padding-top:2px;
+}
+div.zd_dialog_t1 div.t2 div.t3  div.t4b
+{
+    padding-top:2px;
+}
+
+
+div.zd_dialog_c1
+{
+    background:#f1f1f1;
+    padding-left:5px;
+    padding-right:5px;
+    text-align:left;
+    border-left:1px #3E6BC7 solid;
+    border-right:1px #3E6BC7 solid;
+    font-size:10pt;
+}
+
+div.zd_dialog_b1
+{
+    background: url(media/zd_dialog_top_corners.gif) bottom left no-repeat; 
+    padding-left:5px;
+    font-size:1pt;
+}
+
+div.zd_dialog_b1 div.b2
+{
+    background: url(media/zd_dialog_top_corners.gif) bottom right no-repeat;
+    padding-right:5px;
+}
+
+div.zd_dialog_b1 div.b2 div.b3
+{
+    background: #f1f1f1; 
+    height:4px; 
+    border-bottom:1px #3E6BC7 solid;
+}
+
+/***********************************************/
+
+a.zddialog_close_graphic
+{
+    text-decoration: none;
+}
+a.zddialog_close_graphic span
+{
+    width:22px;
+    height:22px;
+    float:left;
+    background: url(media/zd_popup_x_unselected.gif) no-repeat;
+}
+a.zddialog_close_graphic:hover span
+{
+    background: url(media/zd_popup_x_selected.gif) no-repeat;
+    cursor:pointer;
+}
+
+a.zddialog_question_graphic
+{
+    text-decoration: none;
+}
+a.zddialog_question_graphic span
+{
+    width:22px;
+    height:22px;
+    float:left;
+    background: url(media/zd_popup_q_unselected.gif) no-repeat;
+}
+a.zddialog_question_graphic:hover span
+{
+    background: url(media/zd_popup_q_selected.gif) no-repeat;
+    cursor:pointer;
+}

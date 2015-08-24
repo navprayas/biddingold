@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+ 
+<hibernate-configuration>
+    <session-factory>
+
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+<!--        <property name="hibernate.cache.provider_configuration_file_resource_path">/ehcache.xml</property>-->
+        
+        <!-- property name = "hibernate.show_sql">true</property -->
+         <property name="hibernate.format_sql">true</property>
+        <property name="hibernate.cache.use_second_level_cache">true</property>
+    	<property name="hibernate.cache.use_query_cache">true</property>    
+<!--        <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>-->
+        <property name="hibernate.generate_statistics">true</property>
+        
+        <mapping class="com.navprayas.bidding.template.form.Contact" />        
+        <mapping class="com.navprayas.bidding.common.form.Address" />
+         <mapping class="com.navprayas.bidding.common.form.UserActivity" />
+        <mapping class="com.navprayas.bidding.common.form.Auction" />
+        <mapping class="com.navprayas.bidding.common.form.AutoBids" />
+        <mapping class="com.navprayas.bidding.common.form.BidderCategory" />
+        <mapping class="com.navprayas.bidding.common.form.BiditemBidder"/>
+        <mapping class="com.navprayas.bidding.common.form.BidItem" />
+        <mapping class="com.navprayas.bidding.common.form.BidItemExt" />
+        <mapping class="com.navprayas.bidding.common.form.Bids" />
+        <mapping class="com.navprayas.bidding.common.form.Category" />
+        <mapping class="com.navprayas.bidding.common.form.ContactDetails" />
+        <mapping class="com.navprayas.bidding.common.form.ItemLot" />
+        <mapping class="com.navprayas.bidding.common.form.Markets" />
+        <mapping class="com.navprayas.bidding.common.form.RegUser" />
+        <mapping class="com.navprayas.bidding.admin.form.Variable" />
+		<mapping class="com.navprayas.bidding.common.form.Users" />
+		<mapping class="com.navprayas.bidding.common.form.UserDetails" />
+		<mapping class="com.navprayas.bidding.common.form.Authorities" />
+		<mapping class="com.navprayas.bidding.common.form.FirmDetails" />
+		<mapping class="com.navprayas.bidding.fileupload.entity.FileUploadEntity"/>
+		<mapping class="com.navprayas.bidding.fileupload.entity.BidItemEntity"/>
+		<mapping class="com.navprayas.bidding.fileupload.entity.ItemLotEntity"/>
+		<mapping class="com.navprayas.bidding.cretateauction.entity.CreateAuctionEntity"/>
+		
+        <mapping resource="Bid.hbm.xml"/>
+        <mapping resource="AutoBid.hbm.xml"/>
+        <mapping resource="BidItemUpdate.hbm.xml"/>
+        <!-- <mapping resource="NamedQueries.hbm.xml"/>  -->
+		<mapping class="com.navprayas.bidding.common.form.CloseBids" />
+		<mapping class="com.navprayas.bidding.common.form.BidSequence" />
+		<mapping class="com.navprayas.bidding.common.form.LotsStatus" />
+	    
+    </session-factory>
+	    
+</hibernate-configuration>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/spring/security/applicationContext-security.xml
+		</param-value>
+	</context-param>
+	<!-- Reads request input using UTF-8 encoding -->
+	<filter>
+		<filter-name>characterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>characterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>UrlRewriteFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+		<!--
+	  - Loads the root application context of this web app at startup.
+	  - The application context is then available via
+	  - WebApplicationContextUtils.getWebApplicationContext(servletContext).
+    -->
+    <listener>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	 
+	<display-name>bidding</display-name>
+	<servlet>
+		<servlet-name>bidding</servlet-name>
+		<servlet-class>
+			org.springframework.web.servlet.DispatcherServlet
+		</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bidding</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!--
+		Serves static resource content from .jar files such as spring-js.jar
+	-->
+	<servlet>
+		<servlet-name>Resource Servlet</servlet-name>
+		<servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class>
+		
+		 <init-param>
+			<param-name>allowedResourcePaths</param-name>
+			<param-value>/*/*.css,/*/*.gif,/*/*.ico,/*/*.jpeg,/*/*.jpg,/*/*.js,/*/*.png,/*/*/*.css,/*/*/*.gif,/*/*/*.ico,/*/*/*.jpeg,/*/*/*.jpg,/*/*/*.js,/*/*/*.png,/*/*/*/*.css,/*/*/*/*.gif,/*/*/*/*.ico,/*/*/*/*.jpeg,/*/*/*/*.jpg,/*/*/*/*.js,/*/*/*/*.png,/*/*.pdf,/*/*.woff,/*/*.woff2,/*/*.ttf,/*/*.css,/*/*/*.css,/*/*.css.map,/*/*/*.css.map</param-value>
+		</init-param>
+	</servlet>
+	
+	<!-- <servlet-mapping>
+		<servlet-name>ems</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping> -->
+	
+	<!--
+		Map all /resources requests to the Resource Servlet for handling
+	-->
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/resources/*</url-pattern>
+	
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Resource Servlet</servlet-name>
+		<url-pattern>/static/*</url-pattern>
+		
+	</servlet-mapping>
+	
+  <servlet>
+    <servlet-name>dwr-invoker</servlet-name>
+    <servlet-class>com.navprayas.bidding.dwr.DWRServletExtension</servlet-class>
+
+    <!-- This should NEVER be present in live -->
+    <init-param>
+      <param-name>debug</param-name>
+      <param-value>true</param-value>
+    </init-param>
+
+    <!-- Remove this unless you want to use active reverse ajax -->
+    <init-param>
+      <param-name>activeReverseAjaxEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+
+    <!-- By default DWR creates application scope objects when they are first
+    used. This creates them when the app-server is started -->
+    <init-param>
+      <param-name>initApplicationScopeCreatorsAtStartup</param-name>
+      <param-value>true</param-value>
+    </init-param>
+
+    <!-- WARNING: allowing JSON-RPC connections bypasses much of the security
+    protection that DWR gives you. Take this out if security is important -->
+    <init-param>
+      <param-name>jsonRpcEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+
+    <!-- WARNING: allowing JSONP connections bypasses much of the security
+    protection that DWR gives you. Take this out if security is important -->
+    <init-param>
+      <param-name>jsonpEnabled</param-name>
+      <param-value>true</param-value>
+    </init-param>
+
+    <!-- data: URLs are good for small images, but are slower, and could OOM for
+    larger images. Leave this out (or keep 'false') for anything but small images -->
+    <init-param>
+      <param-name>preferDataUrlSchema</param-name>
+      <param-value>false</param-value>
+    </init-param>
+
+    <!-- This enables full streaming mode. It's probably better to leave this
+    out if you are running across the Internet -->
+    <init-param>
+      <param-name>maxWaitAfterWrite</param-name>
+      <param-value>-1</param-value>
+    </init-param>
+    <init-param>
+      <param-name>maxWaitingThreads</param-name>
+      <param-value>50</param-value>
+    </init-param>
+    <init-param>
+      <param-name>maxHitsPerSecond</param-name>
+      <param-value>50</param-value>
+    </init-param> 
+  
+	<init-param>
+      <param-name>org.directwebremoting.extend.ServerLoadMonitor</param-name>
+      <param-value>org.directwebremoting.impl.PollingServerLoadMonitor</param-value>
+    </init-param>
+    <init-param>
+     <param-name>disconnectedTime</param-name>
+     <param-value>5000</param-value>
+    </init-param>    
+   
+    <!--
+    For more information on these parameters, see:
+    - http://getahead.org/dwr/server/servlet
+    - http://getahead.org/dwr/reverse-ajax/configuration
+    -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>dwr-invoker</servlet-name>
+    <url-pattern>/dwr/*</url-pattern>
+  </servlet-mapping>
+  
+  <jsp-config>
+	  <taglib>
+			<taglib-uri>http://displaytag.sf.net</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/displaytag.tld</taglib-location>
+	   </taglib>
+	   <taglib>
+			<taglib-uri>http://www.springframework.org/tags/form</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/spring-form.tld</taglib-location>
+		</taglib>
+	  	
+  </jsp-config>
+  
+   <resource-ref>
+      <description>DB Connection</description>
+      <res-ref-name>jdbc/auctionDB</res-ref-name>
+      <res-type>javax.sql.DataSource</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>
+  
+   <resource-ref>
+      <description>Mail Session</description>
+      <res-ref-name>mail/Session</res-ref-name>
+      <res-type>javax.mail.Session</res-type>
+      <res-auth>Container</res-auth>
+  </resource-ref>  
+  
+  <welcome-file-list>
+  	<welcome-file>login</welcome-file>
+  </welcome-file-list>
+  
+  <error-page>   
+  <error-code>404</error-code>   
+  <location>/404.jsp</location>   
+  </error-page>   
+  <error-page>   
+  <error-code>500</error-code>   
+  <location>/error.jsp</location>
+  </error-page>
+</web-app>

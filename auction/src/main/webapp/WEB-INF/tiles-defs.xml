@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="baseLayout" template="/WEB-INF/tiles/baseLayout.jsp">
+		<put-attribute name="title" value="Template" />
+		<put-attribute name="header" value="/WEB-INF/tiles/header.jsp" />
+		<put-attribute name="body" value="/WEB-INF/tiles/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+	</definition>
+	<definition name="loginLayout" template="/WEB-INF/tiles/loginLayout.jsp">
+		<put-attribute name="title" value="Template" />
+		<put-attribute name="header" value="/WEB-INF/tiles/loginheader.jsp" />
+
+		<put-attribute name="body" value="/WEB-INF/tiles/body.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp" />
+
+	</definition>
+	<definition name="login" extends="loginLayout">
+		<put-attribute name="title" value="Login" />
+		<put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+	</definition>
+
+
+	<definition name="changepass" extends="baseLayout">
+		<put-attribute name="title" value="Change Password" />
+		<put-attribute name="body" value="/WEB-INF/jsp/common/changepass.jsp" />
+	</definition>
+	<definition name="error" extends="baseLayout">
+		<put-attribute name="title" value="Error" />
+		<put-attribute name="body" value="/WEB-INF/tiles/errorbody.jsp" />
+		<!-- <put-attribute name="header" value="/WEB-INF/jsp/loginHeader.jsp"/> -->
+	</definition>
+</tiles-definitions>
