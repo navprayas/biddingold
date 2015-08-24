@@ -45,7 +45,7 @@ public class AdminController {
 	@Qualifier("commonService")
 	private ICommonService commonService;
 
-	@RequestMapping("/home")
+	@RequestMapping(value = { "/home", "/" },method=RequestMethod.GET)
 	public String getAdminHome(ModelMap modelMap,
 			HttpServletRequest httpServletRequest) {
 		/* "admin/vendorRegistrationPage"; */

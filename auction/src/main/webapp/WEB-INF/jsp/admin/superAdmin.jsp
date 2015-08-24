@@ -12,11 +12,11 @@
 				<div class="top-line">
 					<div class="col-xs-12 col-sm-6">
 						<ul class="nav nav-tabs" role="tablist">
-							<li role="presentation" class="active"><a
+							<!-- <li role="presentation" class="active"><a
 								aria-controls="home" role="tab" data-toggle="tab"
-								href="#summary">Auctions</a></li>
-							<!-- <li><a aria-controls="home" role="tab" data-toggle="tab"
-								href="#bidder">Bidder Wise</a></li> -->
+								href="#summary">Auctions</a></li> -->
+							 <li><a aria-controls="home" role="tab" data-toggle="tab"
+								href="#bidder"></a></li> 
 						</ul>
 					</div>
 					<div class="clearfix"></div>

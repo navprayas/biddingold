@@ -308,7 +308,6 @@
 				<!-- </table>-->
 			</div>
 	</div>
-	</div>
 	<div class="table-responsiveuser-map nofound itemlist">
 		<table class="table table-bordered table-striped text-center">
 
@@ -372,8 +371,8 @@
 						</tr>
 
 						<tr>
-							<td>Company Name</td>
-							<td>Bid Price</td>
+							<td><a href="#">Company Name</a></td>
+							<td><a href="#">Bid Price</a></td>
 						</tr>
 					</table>
 				</td>
@@ -391,8 +390,8 @@
 				<td colspan="2"><a href="#">H3</a>
 					<table>
 						<tr>
-							<td>Company Name</td>
-							<td>Bid Price</td>
+							<td><a href="#">Company Name</a></td>
+							<td><a href="#">Bid Price</a></td>
 						</tr>
 					</table></td>
 				<td><a href="#">Lot's Status</a>
@@ -421,7 +420,7 @@
 				<td><a href="#">Total Sales (Qty X SalesPrice)</a></td>
 			</tr>
 
-			 <%-- <tr>
+			<%-- <tr>
 				<!-- <td colspan="10">&nbsp;</td>
 				<td>Company Name</td>
 				<td>Bid Price</td>
@@ -448,7 +447,7 @@
 				</select></td>
 				<td>&nbsp;</td>
 				<td>&nbsp;</td>
-			</tr> --%> 
+			</tr> --%>
 			<c:forEach items="${BidsList}" var="bids" varStatus="status">
 				<tr class="table">
 					<td>${bids.bidItem.serialNo}.</td>
@@ -484,7 +483,8 @@
 												<tr>
 													<td align="left" valign="top"><form name="form1"
 															method="post" action="" style="margin: 0px;">
-															<table>
+															<table
+																class="table table-bordered table-striped text-center">
 																<tr>
 																	<td>Sr. No.</td>
 																	<td>Category</td>

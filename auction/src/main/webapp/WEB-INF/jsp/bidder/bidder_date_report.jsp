@@ -27,7 +27,7 @@
 	media="screen"></link>
 <script type="text/javascript"
 	src="${js_url}/dhtmlgoodies_calendar.js?random=20060118"></script>
-<script type="text/javascript" src="${js_url}/tooltip.js"></script>
+<%-- <script type="text/javascript" src="${js_url}/tooltip.js"></script> --%>
 <script type="text/javascript" src="${js_url}/jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
 	src="${js_url}/jquery-ui-1.8.11.custom.min.js"></script>
@@ -121,7 +121,7 @@ function onSubmit() {
 	src="${js_url}/dhtmlgoodies_calendar.js?random=20060118"></script>
 <link type="text/css" href="${css_url}/jquery-ui-1.8.11.custom.css"
 	rel="stylesheet" />
-<script type="text/javascript" src="${js_url}/tooltip.js"></script>
+<%-- <script type="text/javascript" src="${js_url}/tooltip.js"></script> --%>
 <script type="text/javascript" src="${js_url}/jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
 	src="${js_url}/jquery-ui-1.8.11.custom.min.js"></script>
@@ -176,7 +176,7 @@ function onSubmit() {
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/jsp/bidder/bidder_report_top.jsp"%>
+	<%-- <%@ include file="/WEB-INF/jsp/bidder/bidder_report_top.jsp"%> --%>
 	<div class="Mian">
 		<div id="dhtmltooltip"></div>
 		<script type="text/javascript">
@@ -448,7 +448,7 @@ onmouseout="hideddrivetip()" class="TitleLink">Quantity</a></td>
 		</table>
 		
 		</div>
-		<div class="GreenSpacer"></div>
+		<!-- <div class="GreenSpacer"></div> -->
 
 
 

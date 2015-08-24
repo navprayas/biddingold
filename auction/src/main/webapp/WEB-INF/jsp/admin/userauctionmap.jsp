@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix='security' uri='http://www.springframework.org/security/tags'%>
+<%@ taglib prefix='security'
+	uri='http://www.springframework.org/security/tags'%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <spring:url value="/admin/initcache" var="admin_initcache_url" />
 <spring:url value="admin/closeAuction" var="close_auction_url" />
@@ -11,9 +12,9 @@
 				<div class="top-line">
 					<div class="col-xs-12 col-sm-6 nopad">
 						<ul class="nav nav-tabs" role="tablist">
-							 <li role="presentation" class="active"><a
+							<li role="presentation" class="active"><a
 								aria-controls="home" role="tab" data-toggle="tab"
-								href="#summary">User Auction Mapping</a></li> 
+								href="#summary">User Auction Mapping</a></li>
 							<!-- <li><a aria-controls="home" role="tab" data-toggle="tab"
 								href="#bidder">Bidder Wise</a></li> -->
 						</ul>
@@ -47,7 +48,8 @@
 						<div class="table-responsive user-map">
 							<table class="table table-bordered table-striped text-center">
 								<tr>
-									<td colspan="3"><select name="auction" id="auction">
+									<td colspan="3"> <label>Select Auction</label> <select name="auction" id="auction">
+											<option value="-1">Select</option>
 											<c:forEach var="auction1" items="${AuctionList}">
 												<option id="${auction1.auctionId}"
 													value="${auction1.auctionId}">
@@ -81,8 +83,8 @@
 									</tr>
 								</c:forEach>
 								<tr>
-									<td colspan="5" align="center"><form action="auctionmapping" name="auctionmapform"
-											method="post">
+									<td colspan="5" align="center"><form
+											action="auctionmapping" name="auctionmapform" method="post">
 											<table>
 												<tr>
 													<td><input type="hidden" id="selectedAuctionId"
@@ -116,8 +118,9 @@
 
 
 <script>
-	var message ='<%=request.getParameter("Message")%>';
-	
+	var message ='<%=request.getParameter("Message")%>
+	';
+
 	if (message && message != 'null') {
 		alert(message);
 	}

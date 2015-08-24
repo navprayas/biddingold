@@ -333,19 +333,16 @@ function blah( oCB )
 					<td colspan="3"><input type="radio" name="radio" id="radio"
 						value="1" onClick="getPageForMarketType(this.value)" /> <a
 						href="${bidder_market_url}"
-						onmouseover="ddrivetip('Market List','', 'auto')"
-						onMouseout="hideddrivetip()" class="subTitleLink">&nbsp;Market
+						 class="subTitleLink">&nbsp;Market
 							List</a></td>
 					<td colspan="3"><input type="radio" checked name="radio"
 						id="radio2" value="2" /> <a href="#"
-						onmouseover="ddrivetip('Active Market','', 'auto')"
-						onMouseout="hideddrivetip()" class="subTitleLink">&nbsp;Active
+						class="subTitleLink">&nbsp;Active
 							Market</a></td>
 					<td colspan="3"><input type="radio" name="radio" id="radio3"
 						value="3" onClick="getPageForMarketType(this.value)" /> <a
 						href="${bidder_close_url}"
-						onmouseover="ddrivetip('Closed Market','', 'auto')"
-						onMouseout="hideddrivetip()" class="subTitleLink">&nbsp;Closed
+						 class="subTitleLink">&nbsp;Closed
 							Market</a></td>
 
 					<td colspan="8" align="right"><strong>Total No. of
@@ -367,15 +364,12 @@ function blah( oCB )
 			<table class="table table-bordered table-striped text-center">
 				
 				<tr>
-					<td><a href="#" onmouseover="ddrivetip('Select','', 'auto')"
-						onMouseout="hideddrivetip()">Select</a></td>
-					<td><a href="#" onmouseover="ddrivetip('Sr No','', 'auto')"
-						onMouseout="hideddrivetip()">Sr. No</a></td>
+					<td><a href="#" >Select</a></td>
+					<td><a href="#" o>Sr. No</a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Description','', 'auto')"
-						onMouseout="hideddrivetip()">Description</a></td>
-					<td><a href="#" onmouseover="ddrivetip('Lot No','', 'auto')"
-						onMouseout="hideddrivetip()">Lot No.</a></td>
+						>Description</a></td>
+					<td><a href="#" 
+						>Lot No.</a></td>
 					<td class="vikd">
 						<form name="categoryform" action="active" method="get">
 							<select name="category" id="category"
@@ -406,40 +400,27 @@ function blah( oCB )
 						</form>
 					</td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Material Name','', 'auto')"
-						onMouseout="hideddrivetip()">Material Name</a></td>
-					<td><a href="#" onmouseover="ddrivetip('Remark','', 'auto')"
-						onMouseout="hideddrivetip()">Remark</a></td>
+						>Material Name</a></td>
+					<td><a href="#" >Remark</a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Length Range','', 'auto')"
-						onMouseout="hideddrivetip()">Length Range</a></td>
+						on>Length Range</a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Actual Length','', 'auto')"
-						onMouseout="hideddrivetip()">Actual Length<br />(Approx)
+						>Actual Length<br />(Approx)
 					</a></td>
-					<td><a href="#" onmouseover="ddrivetip('Quantity','', 'auto')"
-						onMouseout="hideddrivetip()">Quantity</a></td>
-					<td><a href="#" onmouseover="ddrivetip('Zone','', 'auto')"
-						onMouseout="hideddrivetip()">Zone</a></td>
+					<td><a href="#" >Quantity</a></td>
+					<td><a href="#" >Zone</a></td>
 					<td><a href="#">Min Increment</a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Current Price','', 'auto')"
-						onMouseout="hideddrivetip()">Current Price (INR)</a></td>
-					<td><a href="#" onmouseover="ddrivetip('Rank','', 'auto')"
-						onmouseout="hideddrivetip()">Rank</a><a href="#"
-						onmouseover="ddrivetip('Rank','', 'auto'); changeStyleSelectedHover();"
-						onMouseout="hideddrivetip(); changeStyleSelectedOut();"></a></td>
+						>Current Price (INR)</a></td>
+					<td><a href="#" >Rank</a><a href="#"
+						changeStyleSelectedOut();"></a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Time Left','', 'auto')"
-						onMouseout="hideddrivetip()">Time Left</a></td>
+						>Time Left</a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Time Left','', 'auto');"
-						onmouseout="hideddrivetip()">Next Bid</a><a href="#"
-						onmouseover="ddrivetip('Next Bid','', 'auto')"
-						onMouseout="hideddrivetip()"></a></td>
+						>Next Bid</a><a href="#"
+						></a></td>
 					<td><a href="#"
-						onmouseover="ddrivetip('Other Bids','', 'auto');"
-						onMouseout="hideddrivetip();"> Other Bids</a></td>
+						> Other Bids</a></td>
 				</tr>
 				<c:forEach items="${bidItemsList}" var="bidItem" varStatus="status">
 					<div id="bidStartTime${bidItem.bidItemId}" style="display: none">${bidItem.bidStartTime}</div>
@@ -1157,7 +1138,7 @@ function removePreffered(bidId)
 <link href="${css_url}/style.css" rel="stylesheet" media="screen" />
 <link type="text/css" href="${css_url}/jquery-ui-1.8.11.custom.css"
 	rel="stylesheet" />
-<script type="text/javascript" src="${js_url}/tooltip.js"></script>
+<%-- <script type="text/javascript" src="${js_url}/tooltip.js"></script> 
 <script type="text/javascript" src="${js_url}/jquery-1.10.2.min.js"></script>
 <script type="text/javascript"
 	src="${js_url}/jquery-ui-1.8.11.custom.min.js"></script>

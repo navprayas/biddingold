@@ -64,7 +64,7 @@ public class BidderController {
 	@Qualifier("bidItemsCacheService")
 	private IBidItemsCacheService bidItemsCacheService;
 
-	@RequestMapping("/home")
+	@RequestMapping(value={"/home","/"},method=RequestMethod.GET)
 	public String getBidItems(ModelMap modelMap,
 			HttpServletRequest httpServletRequest) {
 		logger.info("In getBidItems Method:");

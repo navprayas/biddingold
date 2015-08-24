@@ -482,57 +482,30 @@
 		<div class="table-responsive user-map hktk">
 			<table class="table table-bordered table-striped text-center">
 				<tr>
-					<td width="4%" height="40" align="center" valign="middle"
-						bgcolor="#0082d6" class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Sr No','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Sr. No</a></td>
-					<td width="7%" height="40" align="center" valign="middle"
-						bgcolor="#0082d6" class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Description','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Description</a></td>
-					<td width="7%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Lot No','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Lot No.</a></td>
+					<td ><a href="#"
+						>Sr. No</a></td>
+					<td ><a href="#"
+						>Description</a></td>
+					<td ><a href="#"
+						>Lot No.</a></td>
 
-					<td width="11%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Category Name','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Category
+					<td ><a href="#"
+						>Category
 							Name</a></td>
 
-					<td width="9%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Material Name','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Material
+					<td ><a href="#"
+						>Material
 							Name</a></td>
-					<td width="8%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Remark','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Remark</a></td>
-					<td width="9%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Length Range','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Length Range</a></td>
-					<td width="9%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Actual Length','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Actual
+					<td ><a href="#"
+						>Remark</a></td>
+					<td ><a href="#"
+						>Length Range</a></td>
+					<td ><a href="#"
+						>Actual
 							Length<br /> (Approx)
 					</a></td>
-					<td width="6%" align="center" valign="middle" bgcolor="#0082d6"
-						class="DetailBorRightTitle"><a href="#"
-						onmouseover="ddrivetip('Quantity','', 'auto')"
-						;
-onmouseout="hideddrivetip()" class="TitleLink">Quantity</a></td>
+					<td ><a href="#"
+						>Quantity</a></td>
 				</tr>
 				<c:forEach items="${wonList}" var="bidItem" varStatus="status">
 					<tr class="table">
@@ -558,74 +531,46 @@ onmouseout="hideddrivetip()" class="TitleLink">Quantity</a></td>
 
 											<div id="dialog_desc${status.index+1}" class="desc"
 												title="Item Description">
-												<table>
+												<table class="table table-bordered table-striped text-center">
 													<tr>
 														<td align="left" valign="top"><form name="form1"
 																method="post" action="" style="margin: 0px;">
-																<table >
+																<table class="table table-bordered table-striped text-center">
 																	<tr></tr>
 																	<tr>
-																		<td width="49" height="30" align="center"
-																			valign="middle" bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Sr. No.</td>
-																		<td width="92" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Category</td>
-																		<td width="56" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Lot No.</td>
-																		<td width="131" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Materials
+																		<td >Sr. No.</td>
+																		<td >Category</td>
+																		<td >Lot No.</td>
+																		<td >Materials
 																			Name</td>
-																		<td width="64" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Remark</td>
-																		<td width="96" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Length
+																		<td >Remark</td>
+																		<td >Length
 																			Range</td>
-																		<td width="125" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Actual
+																		<td >Actual
 																			Length <br> (Approx) 
 																		</td>
-																		<td width="87" align="center" valign="middle"
-																			bgcolor="#abcb67"
-																			style="border-right: 1px solid #fff;">Qty</td>
+																		<td >Qty</td>
 																	</tr>
 																	<tr>
-																		<td height="30" align="center" valign="middle"
-																			bgcolor="#f7c794"
-																			style="border-right: 1px solid #fff;">${status.index+1}.
+																		<td >${status.index+1}.
 																		</td>
-																		<td align="center" valign="middle" bgcolor="#f7c794"
-																			style="border-right: 1px solid #fff;">${bidItem.category.categoryName}</td>
-																		<td align="center" valign="middle" bgcolor="#f7c794"
-																			style="border-right: 1px solid #fff;">${bidItem.bidItemId}</td>
-																		<td align="center" valign="middle" bgcolor="#f7c794"
-																			style="border-right: 1px solid #fff;">${bidItem.name}</td>
+																		<td >${bidItem.category.categoryName}</td>
+																		<td >${bidItem.bidItemId}</td>
+																		<td >${bidItem.name}</td>
 																		<c:if test="${fn:length(bidItem.itemLots) == 1}">
 																			<c:forEach items="${bidItem.itemLots}"
 																				var="itemLotUnique" varStatus="status2">
-																				<td align="center" valign="middle" bgcolor="#f7c794"
-																					style="border-right: 1px solid #fff;">${itemLotUnique.remark}</td>
-																				<td align="center" valign="middle" bgcolor="#f7c794"
-																					style="border-right: 1px solid #fff;">${itemLotUnique.lengthRange}</td>
-																				<td align="center" valign="middle" bgcolor="#f7c794"
-																					style="border-right: 1px solid #fff;">${itemLotUnique.actualLengh}</td>
+																				<td >${itemLotUnique.remark}</td>
+																				<td >${itemLotUnique.lengthRange}</td>
+																				<td >${itemLotUnique.actualLengh}</td>
 																			</c:forEach>
 																		</c:if>
 																		<c:if test="${fn:length(bidItem.itemLots) > 1}">
-																			<td align="center" valign="middle" bgcolor="#f7c794"
-																				style="border-right: 1px solid #fff;">&nbsp;</td>
-																			<td align="center" valign="middle" bgcolor="#f7c794"
-																				style="border-right: 1px solid #fff;">&nbsp;</td>
-																			<td align="center" valign="middle" bgcolor="#f7c794"
-																				style="border-right: 1px solid #fff;">&nbsp;</td>
+																			<td >&nbsp;</td>
+																			<td >&nbsp;</td>
+																			<td>&nbsp;</td>
 																		</c:if>
-																		<td align="center" valign="middle" bgcolor="#f7c794"
-																			style="border-right: 1px solid #fff;">${bidItem.totalQuantity}
+																		<td >${bidItem.totalQuantity}
 																			${bidItem.unit}</td>
 																	</tr>
 
@@ -634,24 +579,15 @@ onmouseout="hideddrivetip()" class="TitleLink">Quantity</a></td>
 																		<c:forEach items="${bidItem.itemLots}" var="itemLot"
 																			varStatus="status1">
 																			<tr>
-																				<td height="30" align="center" valign="middle"
-																					bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${status1.index+1}
+																				<td >${status1.index+1}
 																				</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${bidItem.category.categoryName}</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${itemLot.lotId}</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${itemLot.name}</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${itemLot.remark}</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${itemLot.lengthRange}</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${itemLot.actualLengh}</td>
-																				<td align="center" valign="middle" bgcolor="#f0f3ea"
-																					style="border-right: 1px solid #fff;">${itemLot.quantity}
+																				<td >${bidItem.category.categoryName}</td>
+																				<td >${itemLot.lotId}</td>
+																				<td >${itemLot.name}</td>
+																				<td >${itemLot.remark}</td>
+																				<td >${itemLot.lengthRange}</td>
+																				<td >${itemLot.actualLengh}</td>
+																				<td >${itemLot.quantity}
 																					${itemLot.unit}</td>
 																			</tr>
 																		</c:forEach>

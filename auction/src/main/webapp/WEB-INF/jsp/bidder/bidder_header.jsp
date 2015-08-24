@@ -80,25 +80,15 @@
 				<div class="navbar-collapse collapse" id="navbar">
 					<ul class="nav navbar-nav auction-menu">
 						<li class="active"><a href="${bidder_home_url}/home"
-							onMouseover="ddrivetip('Forward Market Price','', 'auto')"
-							;
-onMouseout="hideddrivetip()">Forward Market</a></li>
+							>Forward Market</a></li>
 						<li><a href="${bidder_home_url}/bidderReport"
-							onMouseover="ddrivetip('Won Bids','', 'auto')"
-							;
-onMouseout="hideddrivetip()">Won Bids</a></li>
+							>Won Bids</a></li>
 						<li><a href="${pdf_url}/termandcondition.pdf" target="_blank"
-							onMouseover="ddrivetip('General Terms &amp; Condition','', 'auto')"
-							;
-onMouseout="hideddrivetip()">General Terms &amp; Condition</a></li>
+							>General Terms &amp; Condition</a></li>
 						<li><a href="${home_url}changepass" class="ui-corner-all"
-							onMouseover="ddrivetip('Change Password','', 'auto')"
-							;
-onMouseout="hideddrivetip()">Change Password</a></li>
+							>Change Password</a></li>
 						<li><a href="#"
-							onMouseover="ddrivetip('Coming Soon','', 'auto')"
-							;
-onMouseout="hideddrivetip()">Help</a></li>
+							>Help</a></li>
 
 					</ul>
 				</div>

@@ -162,7 +162,7 @@ public class LoginController {
 	
 	@RequestMapping(value = "/users/forgotPassword")
 	public  String  forgotPassword(HttpServletRequest httpServletRequest){		
-		return "/users/forgotpassword";
+		return "forgotpassword";
 	}
 	
 	@RequestMapping(value = "/users/forgotPasswordSendMail")
@@ -182,7 +182,7 @@ public class LoginController {
 			modelMap.addAttribute("forgotPassMessage", "Email sent Successfully. Please try logging with new Password.");			
 		}
 
-		return "/users/forgotpasswordConfirmation";
+		return "forgotpasswordConfirmation";
 	}
 	
 }

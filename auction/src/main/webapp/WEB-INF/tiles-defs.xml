@@ -29,6 +29,20 @@
 		<put-attribute name="title" value="Change Password" />
 		<put-attribute name="body" value="/WEB-INF/jsp/common/changepass.jsp" />
 	</definition>
+	
+	<definition name="forgotpassword" extends="baseLayout">
+		<put-attribute name="title" value="Forgot Password" />
+		<put-attribute name="body" value="/WEB-INF/jsp/users/forgotpassword.jsp" />
+	</definition>
+	
+	
+	<definition name="forgotpasswordConfirmation" extends="baseLayout">
+		<put-attribute name="title" value="Forgot Password Confirm" />
+		<put-attribute name="body" value="/WEB-INF/jsp/users/forgotpasswordConfirmation.jsp" />
+	</definition>
+	
+	
+	
 	<definition name="error" extends="baseLayout">
 		<put-attribute name="title" value="Error" />
 		<put-attribute name="body" value="/WEB-INF/tiles/errorbody.jsp" />
